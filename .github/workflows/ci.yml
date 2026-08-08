@@ -1,4 +1,4 @@
-name: SkyNest CI
+name: SkyNest CI/CD
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,6 @@ jobs:
 
       - name: Check application
         run: node --check app.js
+
+      - name: Build Docker image
+        run: docker build -t skynest .
